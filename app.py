@@ -35,9 +35,9 @@ def voice_end():
     print("Call ended:", request.form.to_dict())
     return Response('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', mimetype='text/xml')
 
-@app.route('/health')
+@app.route('/health', methods=['GET'])
 def health():
-    return "healthy", 200
+    return {"status": "healthy", "service": "at-vapi-bridge"}, 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
